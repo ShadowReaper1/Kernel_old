@@ -2121,6 +2121,7 @@ static int cpufreq_set_policy(struct cpufreq_policy *policy,
 	policy->max = new_policy->max;
 #endif
 	//ASUS Joy_Lin ---
+	trace_cpu_frequency_limits(policy->max, policy->min, policy->cpu);
 
 	pr_debug("new min and max freqs are %u - %u kHz\n",
 					policy->min, policy->max);
