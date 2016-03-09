@@ -819,11 +819,20 @@ static int msm_otg_set_peripheral(struct usb_otg *otg,
 		if (otg->state == OTG_STATE_B_PERIPHERAL) {
 			pm_runtime_get_sync(otg->usb_phy->dev);
 			msm_otg_start_peripheral(otg->usb_phy, 0);
-			otg->gadget = NULL;
+			/* We shouldn't clear gadget here because
+			 * this will make msm_otg_start_peripheral
+			 * can't work correctly.
+			 * We leave udc driver to clean peripheral
+			 * instead of doing it here. So the gadget
+			 * will be always none-NULL till udc driver
+			 * clean it.
+			 */
+			/* otg->gadget = NULL; */
 			otg->state = OTG_STATE_UNDEFINED;
 			schedule_work(&motg->sm_work);
 		} else {
-			otg->gadget = NULL;
+			/* Ditto */
+			/* otg->gadget = NULL; */
 		}
 
 		return 0;
