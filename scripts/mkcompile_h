@@ -73,8 +73,8 @@ UTS_TRUNCATE="cut -b -$UTS_LEN"
 
   echo \#define UTS_VERSION \"`echo $UTS_VERSION | $UTS_TRUNCATE`\"
 
-  echo \#define LINUX_COMPILE_BY \"lejen\"
-  echo \#define LINUX_COMPILE_HOST \"lejen-corp®\"
+  echo \#define LINUX_COMPILE_BY \"ShadowReaper1\"
+  echo \#define LINUX_COMPILE_HOST \"Raman_Verma\"
 
   echo \#define LINUX_COMPILER \"`$CC -v 2>&1 | tail -n 1`\"
 ) > .tmpcompile
